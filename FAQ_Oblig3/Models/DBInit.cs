@@ -35,12 +35,48 @@ namespace FAQ_Oblig3.Models
                 });
                 context.Add(new Qa
                 {
-                    Type = "Morro",
+                    Type = "Betaling",
+                    Question = "Kan man låne penger?",
+                    Answer = "Yeah!",
+                    Likes = 10,
+                    Dislikes = 4,
+
+                });
+                context.Add(new Qa
+                {
+                    Type = "Betaling",
+                    Question = "Hva med bitcoin?",
+                    Answer = "OHyeah!",
+                    Likes = 10,
+                    Dislikes = 4,
+
+                });
+                context.Add(new Qa
+                {
+                    Type = "Film",
                     Question = "hvordan stjeler man filmer?",
                     Answer = "YOU Wish!!!",
                     Likes = 1030,
                     Dislikes = 4,
                  
+                });
+                context.Add(new Qa
+                {
+                    Type = "Film",
+                    Question = "hvordan unngår man filmer?",
+                    Answer = "det er vanskelig",
+                    Likes = 1030,
+                    Dislikes = 4,
+
+                });
+                context.Add(new Qa
+                {
+                    Type = "Film",
+                    Question = "list over de beste filmene?",
+                    Answer = "YOU Wish!!!",
+                    Likes = 1030,
+                    Dislikes = 4,
+
                 });
                 context.Add(new Qa
                 {
@@ -54,8 +90,8 @@ namespace FAQ_Oblig3.Models
                 context.Add(new Qa
                 {
                     Type = "Nedlasting",
-                    Question = "hvordan laster man ned?",
-                    Answer = "Får en link tilsendt epost med nedlastingsmulighet",
+                    Question = "hvorfor kan man ikke bare bruke piratebay?",
+                    Answer = "fullt lovlig",
                     Likes = 30,
                 
 

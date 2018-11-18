@@ -16,127 +16,180 @@
           align-content: center;
           padding-left: 100px;
         }
+      #wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
     </style>
 </head>
 <body>
-    <h1>The Three Pandas FAQ</h1>
+  <h1>The Three Pandas FAQ</h1>
 
-    <div class="accordion" id="accordionExample">
-        <div class="card">
-            <div class="card-header" id="headingOne">
-                <h5 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Betaling
-                    </button>
-                </h5>
-            </div>
+  <div class="accordion" id="accordionExample">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h5 class="mb-0">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Betaling
+          </button>
+        </h5>
+      </div>
 
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header" id="headingTwo">
-                <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Film
-                    </button>
-                </h5>
-            </div>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header" id="headingThree">
-                <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        Nedlasting
-                    </button>
-                </h5>
-            </div>
-            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                </div>
-            </div>
-        </div>
-    </div>
+      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
 
 
 
+          <div *ngFor="let Qa of alleQA">
+            <div *ngIf="Qa.type=='Betaling'">
+              <p style="background-color:#428bca">
+                <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                  {{Qa.question}}
+                </a>
+              </p>
+              <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                  <table>
+                    <tr>{{Qa.answer}}</tr>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div>
-        <div class="col-md-6 col-md-offset-1" *ngIf="visQaListe">
-            <div *ngIf="Laster">Laster faq.....</div>
-            <table class="table table-bordered table-condensed">
-                <thead>
-                    <tr>
-                        <th>Question</th>
-                        <th>Answer</th>
-
-                    </tr>
-                </thead>
-                <tbody *ngFor="let Qa of alleQA">
                     <tr>
 
-                        <td>{{Qa.question}}</td>
-                        <td>{{Qa.answer}}</td>
-
+                      <td>{{Qa.likes}}</td>
+                      <td>{{Qa.dislikes}}</td>
                     </tr>
-                </tbody>
-            </table>
-            <button class='btn btn-primary' (click)='newFa()'> Send Question </button>
+                    <tr>
+                      <td> <button class='btn btn-primary' (click)='voteLike(Qa.id)'> Like </button></td>
+                      <td><button class='btn btn-primary' (click)='voteDislike(Qa.id)'> Dislike </button></td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
 
 
+    <div class="card">
+      <div class="card-header" id="headingTwo">
+        <h5 class="mb-0">
+          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Film
+          </button>
+        </h5>
+      </div>
+      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+        <div class="card-body">
+          <div *ngFor="let Qa of alleQA">
+            <div *ngIf="Qa.type=='Film'">
+              <p style="background-color:#428bca">
+                <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                  {{Qa.question}}
+                </a>
+              </p>
+              <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                  <table>
+                    <tr>{{Qa.answer}}</tr>
 
+                    <tr>
 
-
-    <div class="col-sm-4 col-sm-offset-2" *ngIf="showForm">
-        <form [formGroup]="form" (ngSubmit)="vedSubmit()">
-            <input class="form-control" formControlName="Id" type="hidden" />
-            <div class="form-group">
-                <label>Type</label>
-                <input class="form-control" formControlName="Type" />
-                <p class="alert alert-warning" [hidden]="form.controls.Type.valid || (form.controls.Type.pristine && !submitted)">
-                    Feltet er obligatorisk.
-                </p>
+                      <td>{{Qa.likes}}</td>
+                      <td>{{Qa.dislikes}}</td>
+                    </tr>
+                    <tr>
+                      <td> <button class='btn btn-primary' (click)='voteLike(Qa.id)'> Like </button></td>
+                      <td><button class='btn btn-primary' (click)='voteDislike(Qa.id)'> Dislike </button></td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
             </div>
-            <div class="form-group">
-                <label>Question</label>
-                <input class="form-control" formControlName="Question" />
-                <p class="alert alert-warning" [hidden]="form.controls.Question.valid || (form.controls.Question.pristine && !submitted)">
-                    Feltet er obligatorisk.
-                </p>
-            </div>
-
-
-            <div class="form-group">
-                <button type="submit" *ngIf="formStatus=='RegQa'" [disabled]="!form.valid" class="btn btn-primary">Send</button>
-                <button class="btn btn-default" (click)="home()">Back</button>
-            </div>
-        </form>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <div class="card">
+      <div class="card-header" id="headingThree">
+        <h5 class="mb-0">
+          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Nedlasting
+          </button>
+        </h5>
+      </div>
+      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+        <div class="card-body">
+          <div *ngFor="let Qa of alleQA">
+            <div *ngIf="Qa.type=='Nedlasting'">
+
+
+              <p style="background-color:#428bca">
+                <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                  <table border="1">{{Qa.question}}</table>
+                </a>
+              </p>
+
+              <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                  <table border="0">
+                    <tr>{{Qa.answer}}</tr>
+                    <tr>
+                      <td>{{Qa.likes}}</td>
+                      <td>{{Qa.dislikes}}</td>
+                    </tr>
+                    <tr>
+                      <td> <button class='btn btn-primary' (click)='voteLike(Qa.id)'> Like </button></td>
+                      <td><button class='btn btn-primary' (click)='voteDislike(Qa.id)'> Dislike </button></td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+<div id="wrapper"><button class='btn btn-primary' (click)='newFa()'> Send Question </button></div>
+
+
+
+
+
+
+  <div class="col-sm-4 col-sm-offset-2" *ngIf="showForm">
+    <form [formGroup]="form" (ngSubmit)="vedSubmit()">
+      <input class="form-control" formControlName="Id" type="hidden" />
+      <div class="form-group">
+        <label>Type</label>
+        <input class="form-control" formControlName="Type" />
+        <p class="alert alert-warning" [hidden]="form.controls.Type.valid || (form.controls.Type.pristine && !submitted)">
+          Feltet er obligatorisk.
+        </p>
+      </div>
+      <div class="form-group">
+        <label>Question</label>
+        <input class="form-control" formControlName="Question" />
+        <p class="alert alert-warning" [hidden]="form.controls.Question.valid || (form.controls.Question.pristine && !submitted)">
+          Feltet er obligatorisk.
+        </p>
+      </div>
+
+
+      <div class="form-group">
+        <button type="submit" *ngIf="formStatus=='RegQa'" [disabled]="!form.valid" class="btn btn-primary">Send</button>
+        <button class="btn btn-default" (click)="home()">Back</button>
+      </div>
+    </form>
+  </div>
 
 
 </body>

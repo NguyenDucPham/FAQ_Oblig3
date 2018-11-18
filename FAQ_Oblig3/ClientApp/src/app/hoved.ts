@@ -28,8 +28,8 @@ export class hoved {
     this.form = fb.group({
       Id: [""],
       Type: [null, Validators.compose([Validators.required, Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")])],
-      Question: [null, Validators.compose([Validators.required, Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")])]
-   
+      Question: [null, Validators.compose([Validators.required, Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")])],
+    
      
     });
   }
@@ -77,19 +77,19 @@ export class hoved {
     if (this.formStatus == "RegQa") {
       this.lagreQa();
     }
-    else if (this.formStatus == "Change") {
-      this.changeQa();
-    }
+ 
     else {
       alert("Feil i applikasjonen!");
     }
   }
+  
 
-  changeQa() {
+  voteLike(id:number) {
+   
+  }
+  voteDislike(id:number) {
 
   }
-
-
 
   home() {
     
@@ -136,7 +136,7 @@ export class hoved {
         );
     };
 
-
+ 
   
 }
 
@@ -145,6 +145,6 @@ export class Qa {
   Type: string;
   Question: string;
   Answer: string;
-  Like: string;
-  Dislike: string;
+  Likes: number;
+  Dislikes: number;
 }
